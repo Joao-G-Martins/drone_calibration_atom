@@ -1,0 +1,41 @@
+<robot name="DJI_M300_RTK">
+  <!-- * * * Link Definitions * * * -->
+    <link name="body_FLU"> <!--body_FLU is the imu link of drone-->
+      <!--<visual>
+        <geometry>      
+        <mesh scale="0.001 0.001 0.001" filename="file:///home/joao/catkin_ws/src/atom/drone_lidar_front/3D/drone_lidar_front.stl"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <material name="red">
+          <color rgba="1 0 0 1"/>
+        </material>
+      </visual> -->
+    
+    </link>
+    <link name="FPV_CAMERA">
+    </link>
+
+    <link name="os_sensor">
+    </link>
+
+    <link name="xsens">
+    </link>
+
+
+<!-- * * * Joint Definitions * * * -->
+ <joint name="drone_fpv_camera_joint" type="fixed">
+     <parent link="body_FLU"/>
+     <child link="FPV_CAMERA"/>
+     <origin xyz="0.15 0.0 0.110" rpy="-1.56450625 0 -1.57010640284"/>
+ </joint>
+ <joint name="fpv_camera_lidar_joint" type="fixed">
+     <parent link="FPV_CAMERA"/>
+     <child link="os_sensor"/>
+     <origin xyz="0.0 0.20 0.0" rpy="-1.57079633 1.57079633 0.0"/>
+ </joint>
+ <joint name="fpv_camera_xsens" type="fixed">
+     <parent link="FPV_CAMERA"/>
+     <child link="xsens"/>
+     <origin xyz="-0.16739343 -0.00108291 0.15858862" rpy="-2.105748 -1.569829 -0.537213"/>
+ </joint>
+</robot>
